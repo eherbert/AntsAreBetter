@@ -36,4 +36,9 @@ public class GameManager : Photon.PunBehaviour
         ro.maxPlayers = 6;
         PhotonNetwork.JoinOrCreateRoom("Default Room", ro, null);
     }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.log("Joined Room");
+    }
 }
