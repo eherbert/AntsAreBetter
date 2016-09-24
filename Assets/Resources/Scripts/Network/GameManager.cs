@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : Photon.PunBehaviour
-{
+public class GameManager : Photon.PunBehaviour {
 
     public static GameManager instance;
+    public static GameObject player;
 
     // Use this for initialization
     void Start()
@@ -21,6 +21,7 @@ public class GameManager : Photon.PunBehaviour
         }
         DontDestroyOnLoad(gameObject);
         instance = this;
+        PhotonNetwork.automaticallySyncScene = true;
     }
 
 
@@ -39,6 +40,19 @@ public class GameManager : Photon.PunBehaviour
 
     public override void OnJoinedRoom()
     {
-        Debug.log("Joined Room");
+        Debug.Log("Joined Room");
+        if(PhotonNetwork.isMasterClient)
+        {
+            PhotonNetwork.LoadLevel("Game Scene");
+        }
+    }
+
+    void OnLevelWasLoaded(int levelNumber)
+    {
+        if (!PhotonNetwork.inRoom) return;
+        player = PhotonNetwork.Instantiate(
+            "Player",
+            new Vector3(0.0f, 0.5f, 0.0f),
+            Quaternion.identity, 0);
     }
 }
