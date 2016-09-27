@@ -52,7 +52,7 @@ public class GameManager : Photon.PunBehaviour {
         if (!PhotonNetwork.inRoom) return;
         player = PhotonNetwork.Instantiate(
             "Player",
-            new Vector3(0.0f, 0.5f, 0.0f),
+            new Vector2(0.0f, 0.5f),
             Quaternion.identity, 0);
     }
 }
