@@ -9,7 +9,7 @@ public class GameManager : Photon.PunBehaviour {
     // Use this for initialization
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings("Fractals");
+        PhotonNetwork.ConnectUsingSettings("2DFractal");
     }
 
     void Awake()
@@ -43,7 +43,7 @@ public class GameManager : Photon.PunBehaviour {
         Debug.Log("Joined Room");
         if(PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.LoadLevel("Game Scene");
+            PhotonNetwork.LoadLevel("2DFractal");
         }
     }
 
