@@ -4,13 +4,15 @@ using System.Collections;
 public class BodyFollowScript : MonoBehaviour {
 
     public Transform player;
-    public float chaseSpeed = 5f;
-    public float stopDistance = 5f;
     public float currentSpeed;
+
+    private float stopDistance;
+    private float chaseSpeed;
 
     // Use this for initialization
     void Start () {
-
+        stopDistance = (transform.parent.localScale.x)/2;
+        chaseSpeed = 1.5f;
 	}
 	
 	// Update is called once per frame

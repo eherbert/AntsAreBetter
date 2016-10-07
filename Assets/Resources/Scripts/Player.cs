@@ -10,10 +10,12 @@ public class Player : MonoBehaviour{
 
     public float walkSpeed;
     public float newDesiredVector2Threshold;
+    public float distanceOnDesiredVector2;
     public bool playerControlled;
 
     private Rigidbody2D theRigidBody;
     private Vector2 desiredVector2;
+    private ArrayList goodLocations;
 
     // Use this for initialization
     void Start()
@@ -39,8 +41,17 @@ public class Player : MonoBehaviour{
     {
         if(Random.Range(0.0f,1.0f)< newDesiredVector2Threshold)
         {
-            desiredVector2 = new Vector2(Random.Range(-1.0f,1.0f)*1000,Random.Range(-1.0f,1.0f)*1000);
+            desiredVector2 = new Vector2(Random.Range(-1.0f,1.0f)*distanceOnDesiredVector2,Random.Range(-1.0f,1.0f)*distanceOnDesiredVector2);
         }
         transform.position = Vector3.MoveTowards(transform.position, desiredVector2, walkSpeed*Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("GoodItems"))
+        {
+            goodLocations.Add(gameObject.transform.position);
+            Debug.Log("triggered");
+        }
     }
 }
