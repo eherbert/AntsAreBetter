@@ -10,12 +10,15 @@ public class Player : MonoBehaviour{
 
     public float walkSpeed;
     public float newDesiredVector2Threshold;
+    public float attractionToGoodItemsThreshold;
     public float distanceOnDesiredVector2;
     public bool playerControlled;
 
     private Rigidbody2D theRigidBody;
     private Vector2 desiredVector2;
-    private ArrayList goodLocations;
+    private ArrayList goodLocations = new ArrayList();
+    private int transferDataCountdown = 10000;
+    private bool transferData = false;
 
     // Use this for initialization
     void Start()
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour{
     {
         if (playerControlled) PlayerControlledMovement();
         else RandomMovement();
+        //if(transferDataCountdown)
     }
 
     void PlayerControlledMovement()
@@ -39,19 +43,28 @@ public class Player : MonoBehaviour{
 
     void RandomMovement()
     {
-        if(Random.Range(0.0f,1.0f)< newDesiredVector2Threshold)
+        if(Random.Range(0.0f,1.0f) < newDesiredVector2Threshold)
         {
-            desiredVector2 = new Vector2(Random.Range(-1.0f,1.0f)*distanceOnDesiredVector2,Random.Range(-1.0f,1.0f)*distanceOnDesiredVector2);
+            if((goodLocations.Count>0) && (Random.Range(0.0f,1.0f)<attractionToGoodItemsThreshold))
+            {
+                desiredVector2 = (Vector2)goodLocations[(int)Random.Range(0.0f,(float)goodLocations.Count)];
+            }
+            else
+            {
+                desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
+            }
         }
         transform.position = Vector3.MoveTowards(transform.position, desiredVector2, walkSpeed*Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("GoodItems"))
+        if (other.collider.tag == "GoodItems")
         {
-            goodLocations.Add(gameObject.transform.position);
-            Debug.Log("triggered");
+            goodLocations.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+        } else if(other.collider.tag == "Ants" && transferData)
+        {
+            //Debug.Log("trigger");
         }
     }
 }
