@@ -20,8 +20,8 @@ public class AntSpawning : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         antSpawnCountdownInner = antSpawnCountdown;
-        //upperCaseLetters = new ArrayList {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-        //lowerCaseLetters = new ArrayList {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        nounList = new ArrayList();
+        readTextFile("Assets/Resources/Files/nounList.txt");
         colonyPopulationText = GameObject.Find("ColonyPopulationText").GetComponent<Text>();
         colonyPopulationCounter = 0;
     }
@@ -42,8 +42,13 @@ public class AntSpawning : MonoBehaviour {
     }
 
     string RandomNameGenerator() {
-        string ret = upperCaseLetters[Random.Range(0, upperCaseLetters.Count)] as string;
-        while (Random.Range(0, 10) > 1) ret = string.Concat(ret, lowerCaseLetters[Random.Range(0, upperCaseLetters.Count)] as string);
-        return ret;
+        string ret = nounList[Random.Range(0, nounList.Count)] as string;
+        return char.ToUpper(ret[0]) + ret.Substring(1);
+    }
+
+    void readTextFile(string file_path) {
+        StreamReader inp_stm = new StreamReader(file_path);
+        while (!inp_stm.EndOfStream) { nounList.Add(inp_stm.ReadLine()); }
+        inp_stm.Close();
     }
 }
