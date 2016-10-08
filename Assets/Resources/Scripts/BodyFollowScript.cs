@@ -11,16 +11,15 @@ public class BodyFollowScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        stopDistance = (transform.parent.localScale.x)/2;
+        stopDistance = (float)((transform.parent.localScale.x)/2.5);
         chaseSpeed = 1.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Vector3.Distance(transform.position, player.position) >= stopDistance) // check the distance between this game object and Player and continue if it's less than Range
-        {
-            currentSpeed = chaseSpeed * Time.deltaTime; // set the CurrentSpeed to ChaseSpeed and multiply by Time.deltaTime (this prevents it from moving based on FPS)
-            transform.position = Vector3.MoveTowards(transform.position, player.position, currentSpeed);  // set this game objects position to the Player's position at the speed of CurrentSpeed
+        if (Vector3.Distance(transform.position, player.position) >= stopDistance) {
+            currentSpeed = chaseSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.position, currentSpeed);
         }
     }
 }
