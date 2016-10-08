@@ -13,11 +13,16 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         ScrollWheelZoom();
+        RightClickPanning();
     }
 
     void ScrollWheelZoom() {
         float input = Input.GetAxis("Mouse ScrollWheel");
         if(input>0 && gameObject.transform.position.z<-1) gameObject.transform.Translate(0, 0, input * ROTSpeed);
         else if(input<0) gameObject.transform.Translate(0, 0, input * ROTSpeed);
+    }
+
+    void RightClickPanning() {
+        //float input = Input.GetMouseButtonDown(1);
     }
 }
