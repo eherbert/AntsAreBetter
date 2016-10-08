@@ -25,4 +25,6 @@ public class CameraMovement : MonoBehaviour {
     void RightClickPanning() {
         //float input = Input.GetMouseButtonDown(1);
     }
+
+
 }
