@@ -6,6 +6,7 @@ public class MenuButtons : MonoBehaviour {
     public GameObject PauseButton;
     public GameObject PlayButton;
     public GameObject DoublePlayButton;
+    public GameObject AntsText;
 
     private bool isShowing;
 
@@ -35,6 +36,7 @@ public class MenuButtons : MonoBehaviour {
         PauseButton.SetActive(set);
         PlayButton.SetActive(set);
         DoublePlayButton.SetActive(set);
+        AntsText.SetActive(set);
         isShowing = set;
     }
 }

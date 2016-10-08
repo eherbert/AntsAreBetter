@@ -11,7 +11,7 @@ public class BodyFollowScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        stopDistance = (float)((transform.parent.localScale.x)/2.5);
+        stopDistance = (float)((transform.parent.localScale.x)/5);
         chaseSpeed = 1.5f;
 	}
 	
