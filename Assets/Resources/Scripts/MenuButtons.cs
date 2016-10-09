@@ -9,6 +9,7 @@ public class MenuButtons : MonoBehaviour {
     public GameObject AntsText;
 
     private bool isShowing;
+    private int antSpawnCountdown;
 
     void Start() {
         SetAll(false);
@@ -17,18 +18,24 @@ public class MenuButtons : MonoBehaviour {
 
     void OnMouseEnter() {
         if (!isShowing) { SetAll(true); } else { SetAll(false); }
+        antSpawnCountdown = GameObject.Find("Queen").GetComponent<AntSpawning>().antSpawnCountdown;
     }
 
     public void PauseButtonOnPressed() {
         Time.timeScale = 0;
+        GameObject.Find("Queen").GetComponent<AntSpawning>().areSpawning = false;
         SetAll(false);
     }
     public void PlayButtonOnPressed() {
         Time.timeScale = 1;
+        GameObject.Find("Queen").GetComponent<AntSpawning>().areSpawning = true;
+        GameObject.Find("Queen").GetComponent<AntSpawning>().antSpawnCountdown = antSpawnCountdown;
         SetAll(false);
     }
     public void DoublePlayButtonOnPressed() {
         Time.timeScale = 3;
+        GameObject.Find("Queen").GetComponent<AntSpawning>().areSpawning = true;
+        GameObject.Find("Queen").GetComponent<AntSpawning>().antSpawnCountdown = antSpawnCountdown/3;
         SetAll(false);
     }
 

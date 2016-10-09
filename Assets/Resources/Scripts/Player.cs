@@ -9,18 +9,24 @@ public class Player : MonoBehaviour{
     public float attractionToGoodItemsThreshold;
     public float distanceOnDesiredVector2;
     public bool playerControlled;
+    public int dayBorn;
 
     private Rigidbody2D theRigidBody;
     private Vector2 desiredVector2;
     private ArrayList goodLocations = new ArrayList();
     private int transferDataCountdown = 10000;
     private bool transferData = false;
-    private string antName;
     private ArrayList capitalLetters;
+
+    /*public Player(string name, int day) {
+        gameObject.name = name;
+        dayBorn = day;
+    }*/
 
     // Use this for initialization
     void Start() {
         theRigidBody = GetComponent<Rigidbody2D>();
+        dayBorn = 0;
     }
 
     // Update is called once per frame
