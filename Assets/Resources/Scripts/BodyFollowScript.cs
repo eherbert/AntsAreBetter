@@ -18,8 +18,7 @@ public class BodyFollowScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Vector3.Distance(transform.position, player.position) >= stopDistance) {
-            currentSpeed = chaseSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, player.position, currentSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, chaseSpeed * Time.deltaTime);
         }
     }
 }
