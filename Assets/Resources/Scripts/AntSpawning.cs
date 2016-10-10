@@ -26,7 +26,7 @@ public class AntSpawning : MonoBehaviour {
 	void Start () {
         antSpawnCountdownInner = antSpawnCountdown;
         nounList = new ArrayList();
-        readTextFile("Assets/Resources/Files/nounList.txt");
+        readTextFile("Assets/Resources/Files/Text/nounList.txt");
         colonyPopulationText = GameObject.Find("ColonyPopulationText").GetComponent<Text>();
         dayText = GameObject.Find("DayText").GetComponent<Text>();
         colonyPopulationCounter = 0;
