@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayButtonScript : MonoBehaviour {
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene("MainScene");
     }

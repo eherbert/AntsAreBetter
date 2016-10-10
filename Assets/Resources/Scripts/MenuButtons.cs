@@ -7,6 +7,7 @@ public class MenuButtons : MonoBehaviour {
     public GameObject PlayButton;
     public GameObject DoublePlayButton;
     public GameObject AntsText;
+    public GameObject QuitText;
 
     private bool isShowing;
     private int antSpawnCountdown;
@@ -43,7 +44,8 @@ public class MenuButtons : MonoBehaviour {
         PauseButton.SetActive(set);
         PlayButton.SetActive(set);
         DoublePlayButton.SetActive(set);
-        AntsText.SetActive(set);
+        //AntsText.SetActive(set);
+        QuitText.SetActive(set);
         isShowing = set;
     }
 }
