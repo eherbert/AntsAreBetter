@@ -8,6 +8,15 @@ public class MenuButtons : MonoBehaviour {
     public GameObject DoublePlayButton;
     public GameObject AntsText;
     public GameObject SettingsText;
+    public GameObject ColorText;
+    public GameObject WhiteText;
+    public GameObject RedText;
+    public GameObject OrangeText;
+    public GameObject YellowText;
+    public GameObject GreenText;
+    public GameObject BlueText;
+    public GameObject VioletText;
+    public GameObject BlackText;
     public GameObject QuitText;
 	public GameObject MuteText;
 
@@ -48,6 +57,15 @@ public class MenuButtons : MonoBehaviour {
         DoublePlayButton.SetActive(set);
         //AntsText.SetActive(set);
         SettingsText.SetActive(set);
+        ColorText.SetActive(set);
+        WhiteText.SetActive(set);
+        RedText.SetActive(set);
+        OrangeText.SetActive(set);
+        YellowText.SetActive(set);
+        GreenText.SetActive(set);
+        BlueText.SetActive(set);
+        VioletText.SetActive(set);
+        BlackText.SetActive(set);
         QuitText.SetActive(set);
 		MuteText.SetActive (set);
         isShowing = set;
