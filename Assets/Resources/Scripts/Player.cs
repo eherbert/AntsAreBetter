@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
-public class Player : MonoBehaviour{
+public class Player : Observer {
 
     public float walkSpeed;
     public float newDesiredVector2Threshold;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour{
     void Start() {
         theRigidBody = GetComponent<Rigidbody2D>();
         //dayBorn = 0;
-        desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
+        desiredVector2 = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
     }
 
     // Update is called once per frame
@@ -43,11 +44,11 @@ public class Player : MonoBehaviour{
     }
 
     void RandomMovement() {
-        if(Random.Range(0.0f,1.0f) < newDesiredVector2Threshold) {
-            if((goodLocations.Count>0) && (Random.Range(0.0f,1.0f)<attractionToGoodItemsThreshold)) {
-                desiredVector2 = (Vector2)goodLocations[(int)Random.Range(0.0f,(float)goodLocations.Count)];
+        if(UnityEngine.Random.Range(0.0f,1.0f) < newDesiredVector2Threshold) {
+            if((goodLocations.Count>0) && (UnityEngine.Random.Range(0.0f,1.0f)<attractionToGoodItemsThreshold)) {
+                desiredVector2 = (Vector2)goodLocations[(int)UnityEngine.Random.Range(0.0f,(float)goodLocations.Count)];
             } else {
-                desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
+                desiredVector2 = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
             }
         }
         transform.position = Vector3.MoveTowards(transform.position, desiredVector2, walkSpeed*Time.deltaTime);
@@ -59,5 +60,10 @@ public class Player : MonoBehaviour{
         } else if(other.collider.tag == "Ants" && transferData) {
             //Put information transfer data here
         }
+    }
+
+    public override void OnNotify(GameObject observed, string message, string info)
+    {
+        throw new NotImplementedException();
     }
 }
