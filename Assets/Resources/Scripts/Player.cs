@@ -26,7 +26,8 @@ public class Player : MonoBehaviour{
     // Use this for initialization
     void Start() {
         theRigidBody = GetComponent<Rigidbody2D>();
-        dayBorn = 0;
+        //dayBorn = 0;
+        desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
     }
 
     // Update is called once per frame
