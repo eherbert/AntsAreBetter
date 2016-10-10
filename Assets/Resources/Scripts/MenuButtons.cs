@@ -30,7 +30,7 @@ public class MenuButtons : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        if (!isShowing) { SetAll(true); } else { SetAll(false); }
+        if (!isShowing) { SetSome(true); } else { SetAll(false); }
     }
 
     public void PauseButtonOnPressed() {
@@ -49,6 +49,17 @@ public class MenuButtons : MonoBehaviour {
         GameObject.Find("Queen").GetComponent<AntSpawning>().areSpawning = true;
         GameObject.Find("Queen").GetComponent<AntSpawning>().antSpawnCountdown = antSpawnCountdown/3;
         SetAll(false);
+    }
+
+    void SetSome(bool set) {
+        PauseButton.SetActive(set);
+        PlayButton.SetActive(set);
+        DoublePlayButton.SetActive(set);
+        //AntsText.SetActive(set);
+        SettingsText.SetActive(set);
+        QuitText.SetActive(set);
+        MuteText.SetActive(set);
+        isShowing = set;
     }
 
     void SetAll(bool set) {
