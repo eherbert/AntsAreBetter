@@ -11,6 +11,27 @@ public class ColorButtonScript : MonoBehaviour {
     public GameObject blue;
     public GameObject violet;
     public GameObject black;
-    
 
+    private bool isShowing;
+
+    void Start() {
+        SetAll(false);
+    }
+
+    void OnMouseEnter() {
+        if (isShowing) SetAll(false);
+        else SetAll(true);
+    }
+
+    void SetAll(bool set) {
+        white.SetActive(set);
+        red.SetActive(set);
+        orange.SetActive(set);
+        yellow.SetActive(set);
+        green.SetActive(set);
+        blue.SetActive(set);
+        violet.SetActive(set);
+        black.SetActive(set);
+        isShowing = set;
+    }
 }
