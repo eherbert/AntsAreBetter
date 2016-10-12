@@ -3,13 +3,12 @@ using System.Collections;
 
 public class WhiteText : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public GameObject repo;
+    public string color;
+
+	void OnMouseOver() {
+        if(Input.GetMouseButtonDown(0)) {
+            repo.GetComponent<Observed>().Notify(gameObject, "color", color);
+        }
+    }
 }
