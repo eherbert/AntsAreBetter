@@ -23,6 +23,7 @@ public class AntSpawning : Observer {
     private Text colonyPopulationText;
     private Text dayText;
     private Color currentColor;
+    private bool isSpawningWithTrailRenderer;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +54,7 @@ public class AntSpawning : Observer {
         tmpAnt.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Head").GetComponent<Player>().dayBorn = dayNumber;
+        tmpAnt.transform.FindChild("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
         repo.GetComponent<Observed>().Register(tmpAnt);
         colonyPopulationCounter++;
         colonyPopulationText.text = "Colony Population " + colonyPopulationCounter + ".";
@@ -137,6 +139,10 @@ public class AntSpawning : Observer {
         {
             case "color":
                 SetCurrentColor(info);
+                break;
+            case "trail":
+                if (info == "on") isSpawningWithTrailRenderer = true;
+                else isSpawningWithTrailRenderer = false;
                 break;
         }
     }

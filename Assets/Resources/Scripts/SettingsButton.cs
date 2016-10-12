@@ -12,20 +12,14 @@ public class SettingsButton : MonoBehaviour {
     public GameObject blue;
     public GameObject violet;
     public GameObject black;
+    public GameObject TrailText;
 
     private bool isShowing;
 
     void Start() {
         SetAll(false);
     }
-
-    /*void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) {
-            if (!isShowing) SetAll(true);
-            else SetAll(false);
-        }
-    }*/
-
+    
     void OnMouseEnter()
     {
         if (!isShowing) SetSome(true);
@@ -34,6 +28,7 @@ public class SettingsButton : MonoBehaviour {
 
     public void SetSome(bool set) {
         ColorButton.SetActive(set);
+        TrailText.SetActive(set);
         isShowing = set;
     }
 
@@ -47,6 +42,7 @@ public class SettingsButton : MonoBehaviour {
         blue.SetActive(set);
         violet.SetActive(set);
         black.SetActive(set);
+        TrailText.SetActive(set);
         isShowing = set;
     }
 }

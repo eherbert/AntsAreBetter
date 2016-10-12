@@ -23,7 +23,7 @@ public class ColorButtonScript : MonoBehaviour {
         else SetAll(true);
     }
 
-    void SetAll(bool set) {
+    public void SetAll(bool set) {
         white.SetActive(set);
         red.SetActive(set);
         orange.SetActive(set);

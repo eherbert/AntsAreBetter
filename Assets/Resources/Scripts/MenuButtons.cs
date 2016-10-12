@@ -17,6 +17,7 @@ public class MenuButtons : MonoBehaviour {
     public GameObject BlueText;
     public GameObject VioletText;
     public GameObject BlackText;
+    public GameObject TrailText;
     public GameObject QuitText;
 	public GameObject MuteText;
 
@@ -77,8 +78,9 @@ public class MenuButtons : MonoBehaviour {
         BlueText.SetActive(set);
         VioletText.SetActive(set);
         BlackText.SetActive(set);
+        TrailText.SetActive(set);
         QuitText.SetActive(set);
-		MuteText.SetActive (set);
+        MuteText.SetActive(set);
         isShowing = set;
     }
 }
