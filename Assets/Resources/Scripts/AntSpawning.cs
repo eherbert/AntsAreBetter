@@ -53,7 +53,7 @@ public class AntSpawning : Observer {
         tmpAnt.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
-        tmpAnt.transform.FindChild("Head").GetComponent<Player>().dayBorn = dayNumber;
+        tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetDayBorn(dayNumber);
         tmpAnt.transform.FindChild("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
         repo.GetComponent<Observed>().Register(tmpAnt);
         colonyPopulationCounter++;

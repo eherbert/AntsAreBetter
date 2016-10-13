@@ -21,7 +21,7 @@ public class TitlePlayer : MonoBehaviour
         counter = Random.Range(1.0f, 1000.0f);
         //desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
         //titleWaitCountdownInner = titleWaitCountdown - 3*counter;
-        titleWaitCountdown = Random.Range(0.0f, 5000.0f);
+        titleWaitCountdown = Random.Range(0.0f, 4000.0f);
     }
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class TitlePlayer : MonoBehaviour
     {
         if (Random.Range(0.0f, 1.0f) < newDesiredVector2Threshold)
         {
-            desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
+            //desiredVector2 = new Vector2(Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
+            desiredVector2 = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2 + gameObject.transform.position.x, UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2 + gameObject.transform.position.y);
         }
         transform.position = Vector3.MoveTowards(transform.position, desiredVector2, walkSpeed * Time.deltaTime);
     }
