@@ -23,6 +23,7 @@ public class AntSpawning : Observer {
     private Text colonyPopulationText;
     private Text dayText;
     private Color currentColor;
+    private string currentColorText;
     private bool isSpawningWithTrailRenderer;
 
 	// Use this for initialization
@@ -49,16 +50,25 @@ public class AntSpawning : Observer {
     void InstantiateAntPrefab() {
         tmpAnt = Instantiate(antPrefab, antSpawnVector2, Quaternion.identity) as GameObject;
         tmpAnt.transform.parent = gameObject.transform;
+        SetTraits();
+        RegisterToRepo();
+        UpdateColonyPopulationText();
+        antSpawnCountdownInner = antSpawnCountdown;
+    }
+
+    void SetTraits() {
         tmpAnt.name = RandomNameGenerator();
         tmpAnt.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetDayBorn(dayNumber);
         tmpAnt.transform.FindChild("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
+    }
+
+    void RegisterToRepo() {
         repo.GetComponent<Observed>().Register(tmpAnt);
-        colonyPopulationCounter++;
-        colonyPopulationText.text = "Colony Population " + colonyPopulationCounter + ".";
-        antSpawnCountdownInner = antSpawnCountdown;
+        switch(currentColorText) {
+        }
     }
 
     string RandomNameGenerator() {
@@ -71,6 +81,11 @@ public class AntSpawning : Observer {
         while (!inp_stm.EndOfStream) { nounList.Add(inp_stm.ReadLine()); }
         inp_stm.Close();
         //Thanks Sam Ang!
+    }
+
+    void UpdateColonyPopulationText() {
+        colonyPopulationCounter++;
+        colonyPopulationText.text = "Colony Population " + colonyPopulationCounter + ".";
     }
 
     void FlipDay() {
@@ -131,6 +146,7 @@ public class AntSpawning : Observer {
                 gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
         }
+        currentColorText = color;
     }
 
     override public void OnNotify(GameObject observed, string message, string info)

@@ -4,6 +4,15 @@ using System.Collections;
 public class Observed : MonoBehaviour {
 
     private ArrayList ants;
+    private ArrayList whiteAnts;
+    private ArrayList redAnts;
+    private ArrayList orangeAnts;
+    private ArrayList yellowAnts;
+    private ArrayList greenAnts;
+    private ArrayList blueAnts;
+    private ArrayList violetAnts;
+    private ArrayList blackAnts;
+
     private ArrayList goodItems;
     private ArrayList badItems;
     private GameObject queen;
@@ -16,16 +25,16 @@ public class Observed : MonoBehaviour {
     }
     
     public void Register(GameObject tmp) { ants.Add(tmp); }
-    public void Register(Vector2 tmp, string s) {
-        switch(s) {
+    public void Register(Vector2 tmp, string message, string info) {
+        switch(message) {
             case "goodItems": {
                     goodItems.Add(tmp);
-                    NotifyAllAnts(tmp, s);
+                    NotifyAllAnts(tmp, message);
                 }
                 break;
             case "badItems": {
                     badItems.Add(tmp);
-                    NotifyAllAnts(tmp, s);
+                    NotifyAllAnts(tmp, message);
                 }
                 break;
         }

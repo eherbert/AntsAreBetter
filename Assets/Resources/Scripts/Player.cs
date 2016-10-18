@@ -54,8 +54,8 @@ public class Player : Observer {
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.collider.tag == "GoodItems") { repo.GetComponent<Observed>().Register(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), "goodItems"); }
-        else if(other.collider.tag == "BadItems") { repo.GetComponent<Observed>().Register(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), "goodItems"); }
+        if (other.collider.tag == "GoodItems") { repo.GetComponent<Observed>().Register(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), "goodItems", "tmp"); }
+        else if(other.collider.tag == "BadItems") { repo.GetComponent<Observed>().Register(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), "goodItems", "tmp"); }
     }
 
     public void SetDayBorn(int i) { dayBorn = i; }

@@ -5,6 +5,7 @@ public class InputDetector : MonoBehaviour {
 
     public GameObject canvas;
     public GameObject waterPrefab;
+    public GameObject repo;
 
     private GameObject tmp;
 
