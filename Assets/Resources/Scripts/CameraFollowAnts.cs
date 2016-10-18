@@ -8,7 +8,7 @@ public class CameraFollowAnts : MonoBehaviour {
 
     void Start() {
         mainCamera = GameObject.Find("Main Camera");
-        selectedAntText = GameObject.FindChild("SelectedAntText");
+        selectedAntText = gameObject.transform.FindChild("Canvas").transform.FindChild("SelectedAntText").gameObject;
     }
 
     void OnMouseOver() {
