@@ -30,8 +30,10 @@ public class MenuButtons : MonoBehaviour {
 		antSpawnCountdown = GameObject.Find("Queen").GetComponent<AntSpawning>().antSpawnCountdown;
     }
 
-    void OnMouseEnter() {
-        if (!isShowing) { SetSome(true); } else { SetAll(false); }
+    void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (!isShowing) { SetSome(true); } else { SetAll(false); }
+        }
     }
 
     public void PauseButtonOnPressed() {

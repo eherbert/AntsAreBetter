@@ -18,9 +18,10 @@ public class ColorButtonScript : MonoBehaviour {
         SetAll(false);
     }
 
-    void OnMouseEnter() {
-        if (isShowing) SetAll(false);
-        else SetAll(true);
+    void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (isShowing) SetAll(false); else SetAll(true);
+        }
     }
 
     public void SetAll(bool set) {

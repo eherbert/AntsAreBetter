@@ -3,6 +3,19 @@ using System.Collections;
 
 public class CameraFollowAnts : MonoBehaviour {
 
-    void OnMouseOver() { if (Input.GetMouseButtonDown(0)) GameObject.Find("Main Camera").GetComponent<CameraMovement>().toFollow = gameObject; }
+    private GameObject mainCamera;
+    private GameObject selectedAntText;
+
+    void Start() {
+        mainCamera = GameObject.Find("Main Camera");
+        selectedAntText = GameObject.FindChild("SelectedAntText");
+    }
+
+    void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            mainCamera.GetComponent<CameraMovement>().toFollow = gameObject;
+            selectedAntText.GetComponent<DisplaySelectedAntName>().SetSelectedAnt(gameObject.transform.parent.gameObject);
+        }
+    }
 
 }

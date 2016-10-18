@@ -20,10 +20,10 @@ public class SettingsButton : MonoBehaviour {
         SetAll(false);
     }
     
-    void OnMouseEnter()
-    {
-        if (!isShowing) SetSome(true);
-        else SetAll(false);
+    void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (!isShowing) SetSome(true); else SetAll(false);
+        }
     }
 
     public void SetSome(bool set) {
