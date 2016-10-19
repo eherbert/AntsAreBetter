@@ -6,6 +6,7 @@ public class InputDetector : MonoBehaviour {
     public GameObject canvas;
     public GameObject waterPrefab;
     public GameObject repo;
+    public GameObject mainCamera;
 
     private GameObject tmp;
 
@@ -19,9 +20,13 @@ public class InputDetector : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             if(Input.GetKey("w")) {
                 Vector3 posVec = Input.mousePosition;
-                posVec.z = transform.position.z - Camera.main.transform.position.z;
+                posVec.z = (0-Camera.main.transform.position.z)+1;
                 tmp = Instantiate(waterPrefab, Camera.main.ScreenToWorldPoint(posVec), Quaternion.identity) as GameObject;
             }
+        } else if(Input.GetMouseButtonDown(1)) {
+            Vector3 posVec = Input.mousePosition;
+            posVec.z = transform.position.z - Camera.main.transform.position.z;
+
         }
     }
 }
