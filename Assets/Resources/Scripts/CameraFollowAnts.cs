@@ -17,5 +17,4 @@ public class CameraFollowAnts : MonoBehaviour {
             selectedAntText.GetComponent<DisplaySelectedAntName>().SetSelectedAnt(gameObject.transform.parent.gameObject);
         }
     }
-
 }
