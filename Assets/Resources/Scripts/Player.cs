@@ -19,12 +19,14 @@ public class Player : Observer {
     private int transferDataCountdown = 10000;
     private bool transferData = false;
     private int dayBorn;
+    private string currentColorText;
 
     // Use this for initialization
     void Start() {
         theRigidBody = GetComponent<Rigidbody2D>();
         goodLocations = new ArrayList();
         badLocations = new ArrayList();
+        repo = GameObject.Find("Repo");
         //dayBorn = 0;
         distanceOnDesiredVector2 = UnityEngine.Random.Range(100f, 500f);
         desiredVector2 = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2, UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2);
@@ -34,6 +36,7 @@ public class Player : Observer {
     void Update() {
         if (playerControlled) PlayerControlledMovement();
         else RandomMovement();
+        Debug.Log(goodLocations.Count);
     }
 
     void PlayerControlledMovement() {
@@ -45,7 +48,7 @@ public class Player : Observer {
     void RandomMovement() {
         if(UnityEngine.Random.Range(0.0f,1.0f) < newDesiredVector2Threshold) {
             if((goodLocations.Count>0) && (UnityEngine.Random.Range(0.0f,1.0f)<attractionToGoodItemsThreshold)) {
-                desiredVector2 = (Vector2)goodLocations[UnityEngine.Random.Range(0,goodLocations.Count)];
+                desiredVector2 = (Vector3)goodLocations[UnityEngine.Random.Range(0,goodLocations.Count)];
             } else {
                 desiredVector2 = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2 + gameObject.transform.position.x, UnityEngine.Random.Range(-1.0f, 1.0f) * distanceOnDesiredVector2 + gameObject.transform.position.y);
             }
@@ -59,9 +62,34 @@ public class Player : Observer {
     }
 
     public void SetDayBorn(int i) { dayBorn = i; }
+    public void SetCurrentColorText(string s) { currentColorText = s; }
+    public string ReadCurrentColorText() { return currentColorText; }
 
     public override void OnNotify(GameObject observed, string message, string info)
     {
-        throw new NotImplementedException();
+        if(info==currentColorText) {
+            switch(message) {
+                case "goodItems":
+                    if(!goodLocations.Contains(observed.transform.position)) goodLocations.Add(observed.transform.position);
+                    break;
+                case "badItems":
+                    if (!badLocations.Contains(observed.transform.position)) badLocations.Add(observed.transform.position);
+                    break;
+            }
+        }
+    }
+    public void OnNotifyDeregister(GameObject observed, string message, string info)
+    {
+        if (info == currentColorText) {
+            switch (message)
+            {
+                case "goodItems":
+                    goodLocations.Remove(observed.transform.position);
+                    break;
+                case "badItems":
+                    badLocations.Remove(observed.transform.position);
+                    break;
+            }
+        }
     }
 }

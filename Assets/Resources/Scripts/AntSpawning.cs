@@ -63,12 +63,11 @@ public class AntSpawning : Observer {
         tmpAnt.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
         tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetDayBorn(dayNumber);
         tmpAnt.transform.FindChild("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
+        tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetCurrentColorText(currentColorText);
     }
 
     void RegisterToRepo() {
         repo.GetComponent<Observed>().Register(tmpAnt);
-        switch(currentColorText) {
-        }
     }
 
     string RandomNameGenerator() {
