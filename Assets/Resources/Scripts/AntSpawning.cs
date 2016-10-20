@@ -17,9 +17,7 @@ public class AntSpawning : Observer {
     private int colonyPopulationCounter;
     private int antSpawnCountdownInner;
     private GameObject tmpAnt;
-    private ArrayList upperCaseLetters;
-    private ArrayList lowerCaseLetters;
-    private ArrayList nounList;
+    private string[] nounList;
     private Text colonyPopulationText;
     private Text dayText;
     private Color currentColor;
@@ -29,8 +27,8 @@ public class AntSpawning : Observer {
 	// Use this for initialization
 	void Start () {
         antSpawnCountdownInner = antSpawnCountdown;
-        nounList = new ArrayList();
-        readTextFile("Assets/Resources/Files/Text/nounList.txt");
+        nounList = new string[0];
+        readTextFile("Files/Text/nounList");
         colonyPopulationText = GameObject.Find("ColonyPopulationText").GetComponent<Text>();
         dayText = GameObject.Find("DayText").GetComponent<Text>();
         colonyPopulationCounter = 0;
@@ -71,14 +69,16 @@ public class AntSpawning : Observer {
     }
 
     string RandomNameGenerator() {
-        string ret = nounList[Random.Range(0, nounList.Count)] as string;
+        string ret = nounList[Random.Range(0, nounList.Length)] as string;
         return char.ToUpper(ret[0]) + ret.Substring(1);
     }
 
     void readTextFile(string file_path) {
-        StreamReader inp_stm = new StreamReader(file_path);
+        TextAsset t = Resources.Load(file_path) as TextAsset;
+        nounList = t.text.Split('\n');
+        /*StreamReader inp_stm = new StreamReader(file_path);
         while (!inp_stm.EndOfStream) { nounList.Add(inp_stm.ReadLine()); }
-        inp_stm.Close();
+        inp_stm.Close();*/
         //Thanks Sam Ang!
     }
 
