@@ -6,7 +6,6 @@ public class MenuButtons : MonoBehaviour {
     public GameObject PauseButton;
     public GameObject PlayButton;
     public GameObject DoublePlayButton;
-    public GameObject AntsText;
     public GameObject SettingsText;
     public GameObject ColorText;
     public GameObject WhiteText;
