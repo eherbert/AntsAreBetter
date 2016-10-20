@@ -36,7 +36,6 @@ public class Player : Observer {
     void Update() {
         if (playerControlled) PlayerControlledMovement();
         else RandomMovement();
-        Debug.Log(goodLocations.Count);
     }
 
     void PlayerControlledMovement() {
