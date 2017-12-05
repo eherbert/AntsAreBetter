@@ -20,7 +20,7 @@ public class DisplaySelectedAntName : MonoBehaviour {
     public void SetSelectedAnt(GameObject ant) {
         SelectedAnt = ant;
         gameObject.GetComponent<Text>().text = SelectedAnt.name;
-        gameObject.GetComponent<Text>().color = SelectedAnt.transform.FindChild("Head").GetComponent<SpriteRenderer>().color;
+        gameObject.GetComponent<Text>().color = SelectedAnt.transform.Find("Head").GetComponent<SpriteRenderer>().color;
     }
 
 }

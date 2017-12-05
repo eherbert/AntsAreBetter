@@ -56,12 +56,12 @@ public class AntSpawning : Observer {
 
     void SetTraits() {
         tmpAnt.name = RandomNameGenerator();
-        tmpAnt.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-        tmpAnt.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-        tmpAnt.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
-        tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetDayBorn(dayNumber);
-        tmpAnt.transform.FindChild("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
-        tmpAnt.transform.FindChild("Head").GetComponent<Player>().SetCurrentColorText(currentColorText);
+        tmpAnt.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+        tmpAnt.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+        tmpAnt.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+        tmpAnt.transform.Find("Head").GetComponent<Player>().SetDayBorn(dayNumber);
+        tmpAnt.transform.Find("Abdomen").GetComponent<TrailRenderer>().enabled = isSpawningWithTrailRenderer;
+        tmpAnt.transform.Find("Head").GetComponent<Player>().SetCurrentColorText(currentColorText);
     }
 
     void RegisterToRepo() {
@@ -98,51 +98,51 @@ public class AntSpawning : Observer {
         {
             case "white":
                 currentColor = Color.white;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "red":
                 currentColor = Color.red;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "yellow":
                 currentColor = Color.yellow;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "orange":
                 currentColor = new Color(1.0f, 0.5f, 0.0f);
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "green":
                 currentColor = Color.green;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "blue":
                 currentColor = Color.blue;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "violet":
                 currentColor = new Color(0.4f, 0.0f, 1.0f);
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
             case "black":
                 currentColor = Color.black;
-                gameObject.transform.FindChild("Head").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
-                gameObject.transform.FindChild("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Head").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Thorax").GetComponent<SpriteRenderer>().color = currentColor;
+                gameObject.transform.Find("Abdomen").GetComponent<SpriteRenderer>().color = currentColor;
                 break;
         }
         currentColorText = color;

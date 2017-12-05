@@ -59,12 +59,12 @@ public class Observed : MonoBehaviour {
     
     public void NotifyAllAnts(GameObject tmp, string message, string info) {
         foreach(GameObject ant in ants) {
-            ant.transform.FindChild("Head").GetComponent<Player>().OnNotify(tmp, message, info);
+            ant.transform.Find("Head").GetComponent<Player>().OnNotify(tmp, message, info);
         }
     }
     public void NotifyAllAntsDeregister(GameObject tmp, string message, string info) {
         foreach (GameObject ant in ants) {
-            ant.transform.FindChild("Head").GetComponent<Player>().OnNotifyDeregister(tmp, message, info);
+            ant.transform.Find("Head").GetComponent<Player>().OnNotifyDeregister(tmp, message, info);
         }
     }
 }
