@@ -13,3 +13,9 @@ Click on an ant to reveal it's name.
 ![aab_multicolor.PNG](https://github.com/eherbert/AntsAreBetter/blob/master/Images/aab_multicolor.PNG)
 
 ![aab_multicolor2.PNG](https://github.com/eherbert/AntsAreBetter/blob/master/Images/aab_multicolor2.PNG)
+
+## Controls
+
+Use the menu to change the color of the queen and the color of the succeeding ants.
+
+Hold s and click to lay a sugar cube, w to lay water.
